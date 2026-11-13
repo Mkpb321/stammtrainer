@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#102c34">
+  <title>Hebräisch · Stammtrainer</title>
+  <style>
+    :root{--bg:#f4f2eb;--ink:#102c34;--muted:#607178;--line:#d9dfda;--teal:#176e66;--teal-soft:#e1f0ec;--gold:#c59a50;--card:#ffffff;--bad:#a33a3a;--bad-soft:#fff0ee;--good:#177754;--good-soft:#e7f5ed;--shadow:0 13px 40px rgba(15,42,50,.07)}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;}body{font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #81b4b0;outline-offset:3px} .shell{max-width:1330px;margin:auto;padding:26px clamp(15px,3.5vw,42px) 54px}
+    .mast{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:25px}.brand{display:flex;align-items:center;gap:15px}.mark{width:48px;height:48px;display:grid;place-items:center;background:var(--ink);color:#f4d597;border-radius:14px;font-family:'Times New Roman',serif;font-size:27px}.brand h1{font-family:Georgia,'Times New Roman',serif;font-size:23px;letter-spacing:-.6px;font-weight:650;margin:0}.brand small{display:block;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:2px}.ghost-btn{border:1px solid var(--line);color:var(--ink);background:#ffffffad;border-radius:12px;padding:11px 16px;font-weight:650}.ghost-btn:hover{border-color:var(--teal);background:#fff}
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:23px;align-items:start}.main{min-width:0}.panel{background:var(--card);border:1px solid #e5e7e0;border-radius:23px;box-shadow:var(--shadow)}.setup{padding:clamp(24px,4vw,44px)}.eyebrow{text-transform:uppercase;letter-spacing:2.1px;color:var(--teal);font-size:11px;font-weight:800}.setup h2{font-family:Georgia,'Times New Roman',serif;font-weight:500;font-size:clamp(30px,3.9vw,43px);margin:10px 0 12px;line-height:1.13}.lede{color:var(--muted);margin:0 0 31px;max-width:690px}.setup-group{margin:26px 0 0}.group-header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}.group-header h3{margin:0 0 12px;font-size:15px}.small-actions{display:flex;gap:10px}.linklike{border:0;background:none;color:var(--teal);font-size:12px;font-weight:750;padding:2px}.linklike:hover{text-decoration:underline}.pick-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.choice{position:relative;display:block;cursor:pointer}.choice input{position:absolute;opacity:0;width:1px;height:1px}.choice .pick{border:1.5px solid var(--line);background:#fbfbf8;padding:13px 9px;min-height:57px;border-radius:12px;display:flex;gap:8px;align-items:center;justify-content:space-between;transition:.15s}.choice .pick:hover{border-color:#86aca5}.choice input:checked+.pick{background:var(--teal-soft);border-color:var(--teal)}.choice input:focus-visible+.pick{outline:3px solid #81b4b0;outline-offset:2px}.tick{width:18px;height:18px;min-width:18px;border-radius:5px;border:1.6px solid #b8c2bd;display:grid;place-items:center;background:white;font-size:12px;line-height:1;color:white}.choice input:checked+.pick .tick{background:var(--teal);border-color:var(--teal)}.choice input:checked+.pick .tick::before{content:'✓'}.choice .txt{font-weight:700;font-size:14px}.choice .subtxt{color:var(--muted);font-size:11px;display:block;margin-top:1px;font-weight:500}.choice .word{font-family:'Times New Roman','Noto Serif Hebrew','SBL Hebrew',serif;font-size:24px;direction:rtl;white-space:nowrap}.form-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.form-grid .pick{min-height:49px}.form-grid .txt{font-size:13px}
+    .setup-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}.hint{color:var(--muted);font-size:12px;max-width:390px}.primary{background:var(--teal);border:1px solid var(--teal);color:white;border-radius:12px;padding:14px 23px;font-weight:800;letter-spacing:.1px}.primary:hover{background:#105c55}.warning{font-size:13px;color:var(--bad);margin-top:10px;font-weight:650;min-height:18px}
+    .study{position:relative;overflow:hidden}.study::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:5;opacity:0}.study.flash-correct::after{background:rgba(19,169,94,.43);animation:feedback-flash 850ms ease-out both}.study.flash-wrong::after{background:rgba(222,45,56,.43);animation:feedback-flash 850ms ease-out both}@keyframes feedback-flash{0%{opacity:0}12%{opacity:1}52%{opacity:1}100%{opacity:0}}.study-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e8ebe6;gap:14px;padding:20px 28px}.session-label{font-size:11px;color:var(--teal);text-transform:uppercase;letter-spacing:1.6px;font-weight:850}.counter{font-size:13px;color:var(--muted)}.hebrew-area{padding:38px 18px 33px;text-align:center;min-height:242px;display:flex;align-items:center;justify-content:center;flex-direction:column}.prompt-label{color:var(--muted);font-size:13px;margin:0 0 19px}.hebrew-word{font-family:'Times New Roman','Noto Serif Hebrew','SBL Hebrew','David',serif;font-size:clamp(67px,10vw,112px);line-height:1.75;color:#102c34;direction:rtl;unicode-bidi:isolate;font-weight:400;white-space:nowrap;max-width:100%;}.question{font-size:16px;font-weight:700;margin:2px 0 0;text-align:center}.answers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;padding:28px;border-top:1px solid #edf0eb}.answer{position:relative;min-height:62px;padding:12px 28px 12px 12px;border:1.5px solid #d7dfda;border-radius:13px;background:#fafbf9;color:var(--ink);font-size:15px;font-weight:750;transition:background .13s,border-color .13s,transform .13s}.answer:hover:not(:disabled){transform:translateY(-2px);background:#eaf4f0;border-color:var(--teal)}.answer:disabled{cursor:default}.answer.correct{border-color:var(--good);background:var(--good-soft);color:#125b43}.answer.wrong{border-color:var(--bad);background:var(--bad-soft);color:#812e2e}.answer.pending{border-color:var(--teal);background:var(--teal-soft);color:#125b55}.feedback.pending .feedback-text b{color:var(--teal)}.answer-number{position:absolute;right:9px;top:7px;min-width:19px;height:19px;padding:0 3px;display:grid;place-items:center;border:1px solid #d7dfda;border-radius:5px;background:#fff;color:#607178;font-size:11px;font-weight:800;line-height:1}.answer:disabled .answer-number{opacity:.8}.feedback{border-top:1px solid #e8ece8;margin:0;padding:16px 28px;min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.feedback-text{font-size:14px;color:var(--muted);flex:1 1 300px}.feedback-text b{display:block;font-size:17px;color:var(--ink)}.analysis-line{display:block;color:var(--ink);margin:4px 0;font-size:14px;line-height:1.6}.analysis-instruction{display:block;color:var(--muted);font-size:12px}.feedback.good .feedback-text b{color:var(--good)}.feedback.bad .feedback-text b{color:var(--bad)}.next{border:0;background:#edf4f0;border-radius:9px;padding:9px 13px;font-weight:700;color:var(--teal)}.shortcut{color:var(--muted);font-size:11px;white-space:nowrap}
+    .side{display:flex;flex-direction:column;gap:17px}.side-card{padding:23px}.side h3{margin:0 0 17px;font-size:14px;letter-spacing:.3px}.stat-big{font-size:46px;font-weight:750;line-height:1;letter-spacing:-2px}.stat-big span{font-size:17px;letter-spacing:0;color:var(--muted);font-weight:600}.sub{font-size:12px;color:var(--muted);margin-top:7px}.bar{height:7px;border-radius:8px;background:#e5eae7;overflow:hidden;margin:18px 0 20px}.bar-fill{height:100%;width:0%;border-radius:8px;background:var(--teal);transition:width .25s}.stat-rows{display:grid;gap:12px}.stat-row{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:13px}.stat-row b{color:var(--ink)}.ranking-options{margin-top:25px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#f8faf7}.ranking-options h3{margin:0 0 9px;font-size:15px}.ranking-options p{font-size:12px;color:var(--muted);margin:0 0 12px}.rank-select{background:white;border:1px solid var(--line);border-radius:10px;padding:11px 13px;width:100%;max-width:360px;color:var(--ink);font-weight:650}.rank-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}.rank-dialog{width:min(94vw,740px);max-height:84vh;overflow:auto;border:1px solid var(--line);border-radius:20px;padding:25px;box-shadow:0 20px 90px #102c3460;color:var(--ink);background:white}.rank-dialog::backdrop{background:#102c3477}.rank-dialog h2{font-family:Georgia,serif;font-size:27px;margin:0 0 7px}.rank-dialog p{font-size:13px;color:var(--muted);margin:0 0 18px}.rank-header{display:flex;gap:20px;align-items:start;justify-content:space-between}.rank-item{display:grid;grid-template-columns:36px minmax(0,1fr) 70px;gap:12px;align-items:center;border-bottom:1px solid #e9ede9;padding:13px 3px;font-size:13px}.rank-item b{font-size:15px}.rank-item .rank-count{text-align:right;font-weight:800;white-space:nowrap}.rank-empty{padding:25px 0;color:var(--muted);font-size:14px}.undo-btn{border:1px solid var(--line);background:#fff;color:var(--teal);border-radius:9px;padding:8px 10px;font-size:12px;font-weight:750}.undo-btn:disabled{opacity:.35;cursor:default}.side-note{margin:0;color:var(--muted);font-size:12px;line-height:1.7}.legend{font-size:11px;color:var(--muted);margin-top:22px;padding-top:15px;border-top:1px solid var(--line);line-height:1.65}.selection-tags{display:flex;gap:6px;flex-wrap:wrap}.tag{font-size:11px;padding:5px 9px;border-radius:20px;background:#f0f4f1;color:var(--teal);font-weight:650}.source{color:var(--muted);font-size:11px;line-height:1.7;padding:0 6px;margin-top:20px}.source strong{color:var(--ink)}.hidden{display:none!important}
+    @media(max-width:1050px){.pick-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.form-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.layout{grid-template-columns:minmax(0,1fr) 240px}.answers{grid-template-columns:repeat(4,minmax(0,1fr));padding:20px}}
+    @media(max-width:750px){.layout{grid-template-columns:1fr}.side{display:grid;grid-template-columns:1fr 1fr}.shell{padding-top:16px}.brand h1{font-size:20px}.study-head{padding:18px}.answers{grid-template-columns:repeat(2,minmax(0,1fr))}.feedback{padding:16px 19px}.setup{padding:25px}.hebrew-area{min-height:220px}}
+    @media(max-width:475px){.pick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.side{grid-template-columns:1fr}.brand small{font-size:10px}.brand h1{font-size:18px}.mark{width:42px;height:42px}.ghost-btn{padding:9px 10px;font-size:12px}.hebrew-word{font-size:clamp(55px,15vw,80px)}.setup-bottom .primary{width:100%}.study-head{flex-wrap:wrap}}
+    @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.study.flash-correct::after,.study.flash-wrong::after{opacity:1}}
+    .header-actions{display:flex;gap:10px;align-items:center;flex-shrink:0}.info-btn{width:42px;height:42px;border:1px solid #b9c9c5;border-radius:50%;background:#fff;color:var(--teal);display:grid;place-items:center;font-family:Georgia,'Times New Roman',serif;font-size:23px;font-weight:700;font-style:italic;line-height:1;box-shadow:0 2px 8px #102c340a}.info-btn:hover{background:var(--teal-soft);border-color:var(--teal)}.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;clip-path:inset(50%)}.setup h2{margin-bottom:8px}.setup-group{margin-top:23px}.setup-bottom{justify-content:flex-end;margin-top:26px}.ranking-options{margin-top:28px}.ranking-options .rank-actions{margin-top:14px}.hebrew-area{gap:8px}.hebrew-area .question{margin:0}.help-dialog{width:min(92vw,650px);max-height:min(86vh,900px);padding:0;border:1px solid #e0e6e1;background:white;border-radius:20px;color:var(--ink);box-shadow:0 25px 90px #102c3466;overflow:auto}.help-dialog::backdrop{background:rgba(15,42,50,.57)}.help-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;padding:26px 30px 16px;border-bottom:1px solid var(--line)}.help-head h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(24px,4vw,32px);font-weight:500;line-height:1.15;margin:7px 0 0}.help-close{border:1px solid var(--line);background:#fafbf9;border-radius:10px;font-size:28px;line-height:1;width:37px;height:37px;flex-shrink:0;color:var(--muted)}.help-content{padding:7px 30px 13px}.help-content section{padding:16px 0;border-bottom:1px solid #edf0eb}.help-content section:last-child{border-bottom:0}.help-content h3{font-size:15px;margin:0 0 8px}.help-content p{color:#43595f;margin:7px 0;font-size:14px;line-height:1.63}.help-content strong{color:var(--ink)}kbd{display:inline-block;padding:2px 6px;background:#f2f5f3;border:1px solid #d8e1dc;border-bottom-width:2px;border-radius:5px;color:var(--ink);font-family:inherit;font-size:12px;font-weight:700;white-space:nowrap}.key-rules{display:grid;gap:10px;margin:14px 0}.key-rules>div{display:flex;gap:10px;align-items:flex-start;padding:11px 13px;background:#f8faf8;border:1px solid #e6ebe7;border-radius:10px;font-size:13px;line-height:1.7}.key-state{min-width:60px;font-weight:800}.good-state{color:var(--good)}.bad-state{color:var(--bad)}.help-footer{display:flex;justify-content:flex-end;padding:0 30px 26px}@media(max-width:475px){.header-actions{gap:6px}.info-btn{width:38px;height:38px}.help-head{padding:23px 20px 14px}.help-content{padding:6px 20px}.help-footer{padding:0 20px 20px}.help-head h2{font-size:25px}}
+    /* Einstellungen im Kopfbereich */
+    .menu-wrap{position:relative;z-index:25}.menu-trigger{width:46px;height:46px;border-radius:13px;border:1px solid var(--line);background:#fff;color:var(--ink);display:grid;place-items:center;gap:0;padding:11px;align-content:space-around;box-shadow:0 2px 8px #102c3408}.menu-trigger:hover,.menu-trigger[aria-expanded="true"]{border-color:var(--teal);background:var(--teal-soft)}.menu-trigger .burger-line{display:block;height:2px;width:21px;background:currentColor;border-radius:3px}.settings-menu{position:absolute;right:0;top:calc(100% + 10px);width:min(330px,calc(100vw - 30px));background:#fff;border:1px solid #dce4df;border-radius:17px;box-shadow:0 18px 55px #102c3429;padding:18px;z-index:30}.menu-title{font-size:16px;font-weight:800;margin:0 0 17px}.menu-setting{display:flex;gap:14px;align-items:center;justify-content:space-between;margin:12px 0}.menu-setting label{font-size:14px;font-weight:750}.menu-setting small{display:block;font-weight:450;color:var(--muted);font-size:11px;margin-top:4px}.menu-divider{height:1px;background:var(--line);margin:16px 0}.menu-action{width:100%;text-align:left;border:0;background:transparent;border-radius:9px;padding:11px 9px;color:var(--ink);font-size:14px;font-weight:650}.menu-action:hover{background:var(--teal-soft)}.menu-help{display:flex;align-items:center;gap:10px}.mini-info{border:1px solid #b6c9c2;border-radius:50%;width:22px;height:22px;display:grid;place-items:center;font:italic 700 14px Georgia,serif;color:var(--teal)}.menu-select{width:100%;margin-top:6px}.switch{position:relative;display:inline-block;width:47px;height:27px;flex:none}.switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}.switch .track{position:absolute;inset:0;border-radius:20px;background:#bdc9c4;transition:background .18s;pointer-events:none}.switch .track::after{content:"";position:absolute;top:4px;left:4px;width:19px;height:19px;border-radius:50%;background:white;box-shadow:0 1px 4px #0002;transition:transform .18s}.switch input:checked+.track{background:var(--teal)}.switch input:checked+.track::after{transform:translateX(20px)}.switch input:focus-visible+.track{outline:3px solid #81b4b0;outline-offset:3px}
+    /* Dezente Erfolgsrückmeldung und Sicherheit pro Stamm */
+    .success-pop{position:absolute;z-index:8;left:50%;top:31%;transform:translate(-50%,-50%) scale(.6);pointer-events:none;color:var(--good);background:white;border:2px solid #b1dfc5;border-radius:50%;width:62px;height:62px;font-size:39px;font-weight:850;display:grid;place-items:center;box-shadow:0 8px 27px #17775425;opacity:0}.success-pop.run{animation:pop-good 950ms ease-out forwards}@keyframes pop-good{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}15%{opacity:1;transform:translate(-50%,-50%) scale(1.18)}45%{opacity:1;transform:translate(-50%,-50%) scale(1)}90%{opacity:.95}100%{opacity:0;transform:translate(-50%,-55%) scale(1.07)}}.achievement{position:absolute;z-index:9;top:70px;left:50%;transform:translateX(-50%);background:#143c3a;color:white;padding:10px 18px;border-radius:30px;box-shadow:0 8px 20px #102c3433;font-size:13px;font-weight:750;text-align:center;white-space:nowrap;pointer-events:none}.achievement.run{animation:achievement-in 2600ms ease forwards}@keyframes achievement-in{0%{opacity:0;transform:translate(-50%,-12px)}12%{opacity:1;transform:translate(-50%,0)}82%{opacity:1}100%{opacity:0}}.stem-progress{display:grid;gap:15px}.stem-progress-row{display:grid;gap:6px}.stem-progress-head{display:flex;justify-content:space-between;gap:12px;font-size:13px}.stem-progress-head span:last-child{color:var(--muted);font-size:12px}.stem-progress-track{height:6px;background:#e8eee9;border-radius:9px;overflow:hidden}.stem-progress-fill{height:100%;background:var(--teal);border-radius:9px;transition:width .2s}.rank-desc{display:flex;flex-direction:column;gap:5px;min-width:0}.rank-example{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-size:11px;color:var(--muted)}.rank-example-he{direction:rtl;unicode-bidi:isolate;font:normal 25px/1.4 'Times New Roman','Noto Serif Hebrew','SBL Hebrew',serif;color:var(--ink)}.rank-mastered{font-size:11px;color:var(--good);font-weight:700}.rank-item{grid-template-columns:30px minmax(0,1fr) auto auto;gap:12px}.rank-remove{border:1px solid #e8d8d6;border-radius:8px;background:#fffafa;color:var(--bad);padding:7px 9px;font-weight:750;font-size:12px}.rank-remove:hover{background:var(--bad-soft);border-color:var(--bad)}
+    @media(max-width:475px){.menu-trigger{width:42px;height:42px}.rank-item{grid-template-columns:22px minmax(0,1fr) auto;gap:7px}.rank-remove{grid-column:2/4;justify-self:end}.achievement{max-width:90%;white-space:normal}}
+    @media(prefers-reduced-motion:reduce){.success-pop.run{animation:none;opacity:1}.achievement.run{animation:none;opacity:1}}
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header class="mast"><div class="brand"><div class="mark" aria-hidden="true">א</div><div><h1>Hebräisch · Stammtrainer</h1><small>Alttestamentliches Hebräisch</small></div></div><div class="header-actions"><div class="menu-wrap" id="menuWrap"><button id="menuBtn" class="menu-trigger" type="button" aria-label="Einstellungen öffnen" aria-expanded="false" aria-controls="settingsMenu"><span class="burger-line"></span><span class="burger-line"></span><span class="burger-line"></span></button><div id="settingsMenu" class="settings-menu hidden" aria-label="Einstellungen"><h2 class="menu-title">Einstellungen</h2><div class="menu-setting"><label for="gamificationToggle">Gamification<small>Erfolge, Serien und Stamm-Fortschritt</small></label><label class="switch"><input id="gamificationToggle" type="checkbox" checked aria-label="Gamification ein- oder ausschalten"><span class="track"></span></label></div><div class="menu-divider"></div><label for="rankWeight" style="font-size:13px;font-weight:750">Fehler häufiger üben</label><select id="rankWeight" class="rank-select menu-select"><option value="0">Aus</option><option value="1">Leicht</option><option value="3" selected>Mittel</option><option value="7">Stark</option><option value="12">Sehr stark</option></select><div class="menu-divider"></div><button id="menuSelectionBtn" class="menu-action hidden" type="button">Auswahl ändern</button><button id="rankBtnMenu" class="menu-action" type="button">Fehler-Rangliste ansehen</button><div class="menu-divider"></div><button id="helpBtn" class="menu-action menu-help" type="button"><span class="mini-info" aria-hidden="true">i</span> Hilfe &amp; Bedienung</button></div></div></div></header>
+  <div class="layout">
+    <main class="main">
+      <section id="setup" class="panel setup">
+        <h2>Training einstellen</h2>
+        <div class="setup-group"><div class="group-header"><h3>1 · Verbalstämme</h3><div class="small-actions"><button class="linklike" type="button" data-group="stem" data-check="true">Alle</button><button class="linklike" type="button" data-group="stem" data-check="false">Keine</button></div></div><div class="pick-grid" id="stemChoices"></div></div>
+        <div class="setup-group"><div class="group-header"><h3>2 · Verben / Wurzeln</h3><div class="small-actions"><button class="linklike" type="button" data-group="verb" data-check="true">Alle</button><button class="linklike" type="button" data-group="verb" data-check="false">Keine</button></div></div><div class="pick-grid" id="verbChoices"></div></div>
+        <div class="setup-group"><div class="group-header"><h3>3 · Formen</h3><div class="small-actions"><button class="linklike" type="button" data-group="form" data-check="true">Alle</button><button class="linklike" type="button" data-group="form" data-check="false">Keine</button></div></div><div class="pick-grid form-grid" id="formChoices"></div></div>
+        <div class="setup-bottom"><div id="saveStatus" class="sr-only" role="status" aria-live="polite">Auswahl gespeichert.</div><button id="startBtn" class="primary" type="button">Training starten →</button></div>
+        <div id="warning" class="warning" role="alert" aria-live="polite"></div>
+      </section>
+      <section id="study" class="panel study hidden" aria-label="Übungsmodus">
+        <div class="study-head"><div><div class="session-label">Stammerkennung</div><div class="counter" id="sessionInfo">Zufällige Verbformen</div></div><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><button type="button" class="undo-btn" id="undoBtn" title="Frühere Karte wiederholen (Strg+Z)" disabled>↶ Zurück · Strg+Z</button><button type="button" class="undo-btn" id="redoBtn" title="Zur rückgängig gemachten Karte vorwärts (Strg+Y)" disabled>↷ Vorwärts · Strg+Y</button><div class="counter" id="questionCount">Frage 1</div></div></div>
+        <div class="hebrew-area"><div class="hebrew-word" dir="rtl" lang="he" id="hebrewWord" aria-label="Hebräische Verbform">כָּתַב</div><p class="question">Welcher Stamm?</p></div><div id="successPop" class="success-pop hidden" aria-hidden="true">✓</div><div id="achievement" class="achievement hidden" role="status" aria-live="polite"></div>
+        <div id="answerButtons" class="answers" role="group" aria-label="Stamm auswählen"></div>
+        <div id="feedback" class="feedback"><div class="feedback-text" id="feedbackText" aria-live="polite">Wähle einen Stamm.</div><div class="shortcut hidden" id="shortcut"></div><button type="button" id="nextBtn" class="next hidden">Nächste Form →</button></div>
+      </section>
+
+    </main>
+    <aside class="side" aria-label="Statistik und Hinweise"><div class="panel side-card"><h3>Dein Lernstand</h3><div class="stat-big"><span id="accuracy">–</span><span> richtig</span></div><div class="sub" id="answered">Noch keine Antworten</div><div class="bar"><div class="bar-fill" id="accuracyBar"></div></div><div class="stat-rows"><div class="stat-row"><span>Richtig</span><b id="correctStat">0</b></div><div class="stat-row"><span>Falsch</span><b id="wrongStat">0</b></div><div class="stat-row"><span>Aktuelle Serie</span><b id="streakStat">0</b></div><div class="stat-row"><span>Häufiger wiederholt</span><b id="repeatStat">0</b></div></div></div><div class="panel side-card hidden" id="stemProgressCard"><h3>Sicherheit nach Stamm</h3><div id="stemProgress" class="stem-progress"></div><p class="sub">Trefferquote in dieser Runde</p></div><div class="panel side-card"><h3>Deine Auswahl</h3><div id="selectedTags" class="selection-tags"><span class="tag">7 Stämme</span><span class="tag">5 Wurzeln</span></div></div><div class="panel side-card"><h3>Fehler-Rangliste</h3><p class="side-note" id="rankSideInfo">Noch keine Fehler gespeichert.</p><button class="ghost-btn" type="button" id="rankBtnSide" style="width:100%;margin-top:13px">Rangliste ansehen</button></div></aside>
+  </div>
+</div>
+<dialog id="helpDialog" class="help-dialog" aria-labelledby="helpTitle">
+  <div class="help-head"><div><div class="eyebrow">Anleitung</div><h2 id="helpTitle">So funktioniert der Trainer</h2></div><button type="button" id="closeHelpBtn" class="help-close" aria-label="Hilfe schliessen">×</button></div>
+  <div class="help-content">
+    <section><h3>Vor dem Training</h3><p>Wähle die gewünschten <strong>Stämme, Verben und Formen</strong> aus. Mit „Alle“ und „Keine“ kannst du ganze Gruppen auswählen. Deine Auswahl bleibt im Browser gespeichert. Über das Burger-Menü oben rechts erreichst du die Einstellungen, die Fehler-Rangliste und diese Hilfe.</p></section>
+    <section><h3>Antworten</h3><p>Erkenne am hebräischen Wort den Stamm. Klicke auf einen Antwortknopf oder drücke seine kleine Zahl (<kbd>1</kbd> bis <kbd>7</kbd>). Es werden nur die Stämme abgefragt, die du ausgewählt hast.</p><p>Manche Wörter können innerhalb deiner ausgewählten Stämme <strong>mehrere richtige Antworten</strong> haben. Nach der ersten richtigen Wahl erscheint dann ein Hinweis: Wähle auch die weiteren passenden Stämme. Ein falscher Klick beendet die Frage sofort.</p></section>
+    <section><h3>Ergebnis und nächste Karte</h3><p><strong>Grün</strong> bedeutet richtig, <strong>Rot</strong> bedeutet falsch. Die genaue Bestimmung mit Stamm, Form und Person bleibt sichtbar. Es geht <strong>nie automatisch weiter</strong>.</p>
+      <div class="key-rules"><div><span class="key-state good-state">Richtig</span><span>Mit einer beliebigen Ziffer <kbd>0</kbd>–<kbd>9</kbd> weiter. <strong>Nicht</strong> mit Enter oder Leertaste.</span></div><div><span class="key-state bad-state">Falsch</span><span>Mit <kbd>Enter</kbd> oder <kbd>Leertaste</kbd> weiter. <strong>Nicht</strong> mit Zifferntasten.</span></div></div>
+      <p>Alternativ kannst du auf „Nächste Form“ klicken.</p></section>
+    <section><h3>Zurück und vorwärts</h3><p>Mit <kbd>Strg</kbd> + <kbd>Z</kbd> gehst du mehrere Karten zurück. Mit <kbd>Strg</kbd> + <kbd>Y</kbd> gehst du wieder vorwärts. Auf dem Mac verwendest du <kbd>⌘</kbd> statt Strg. Wenn du nach dem Zurückgehen neu antwortest, geht es von dort weiter.</p></section>
+    <section><h3>Fehler-Rangliste</h3><p>Fehler werden als <strong>Stamm, Form und Person</strong> gespeichert, unabhängig vom Verb. In der Rangliste steht zu jedem Eintrag eine passende hebräische Beispielform von <strong>כָּתַב (schreiben)</strong>. Einzelne Einträge kannst du über „Löschen“ entfernen; „Alle löschen“ entfernt die gesamte Liste. Im Menü stellst du ein, wie oft Fehler wiederkehren. Andere Formen bleiben ebenfalls dabei.</p></section><section><h3>Gamification</h3><p>Schalte im Burger-Menü oben rechts „Gamification“ an oder aus. Mit Gamification gibt es nach richtigen Antworten einen kurzen Haken, Hinweise bei Erfolgsserien und eine Trefferquote pro Stamm. Wenn du eine früher falsch beantwortete grammatische Form <strong>dreimal hintereinander richtig</strong> bestimmst, erscheint „Fehler gemeistert“. Deine Auswahl bleibt im Browser gespeichert.</p></section>
+    <section><h3>Hinweise zu den Formen</h3><p>Die Übung verwendet vokalisierte, regelmässige Musterformen. Nicht jede Form muss im Bibeltext belegt sein. Bestimmte Formen, etwa Jussiv und Imperfekt, können ohne Kontext gleich aussehen. Grundlage sind die entsprechenden Lektionen aus Barbara Mäders <em>Alttestamentliches Hebräisch</em>.</p></section>
+  </div>
+  <div class="help-footer"><button type="button" id="closeHelpBottom" class="primary">Verstanden</button></div>
+</dialog>
+<dialog id="rankDialog" class="rank-dialog"><div class="rank-header"><div><h2>Fehler-Rangliste</h2><p>Grammatische Fehlerformen mit einem Beispiel von כָּתַב (schreiben).</p></div><button id="closeRankBtn" class="ghost-btn" type="button">Schliessen</button></div><div id="rankList"></div><div class="rank-actions" style="justify-content:space-between"><button type="button" id="resetRankBtn" class="linklike" style="color:var(--bad)">Alle löschen</button><button type="button" id="closeRankBottom" class="primary">Schliessen</button></div></dialog>
+<script>
+'use strict';
+const STEMS = [
+ {id:'qal',name:'Qal',meaning:'Grundstamm'},
+ {id:'nif',name:'Nifal',meaning:'Nif\u02bfal'},
+ {id:'hif',name:'Hifil',meaning:'Hif\u02bfil'},
+ {id:'hof',name:'Hofal',meaning:'Hof\u02bfal'},
+ {id:'piel',name:'Piel',meaning:'Pi\u02bfel'},
+ {id:'pual',name:'Pual',meaning:'Pu\u02bfal'},
+ {id:'hit',name:'Hitpael',meaning:'Hitpa\u02bfel'}
+];
+const VERBS = [
+ {id:'ktb',root:'כתב',label:'כָּתַב',gloss:'schreiben (Musterverb)',a:'כ',b:'ת',c:'ב'},
+ {id:'qtl',root:'קטל',label:'קָטַל',gloss:'töten',a:'ק',b:'ט',c:'ל'},
+ {id:'pqd',root:'פקד',label:'פָּקַד',gloss:'aufsuchen',a:'פ',b:'ק',c:'ד'},
+ {id:'qbr',root:'קבר',label:'קָבַר',gloss:'begraben',a:'ק',b:'ב',c:'ר'},
+ {id:'bdl',root:'בדל',label:'בָּדַל',gloss:'trennen',a:'ב',b:'ד',c:'ל'}
+];
+const FORMS = [
+ {id:'perf',name:'Perfekt'}, {id:'impf',name:'Imperfekt'},
+ {id:'coh',name:'Kohortativ'}, {id:'juss',name:'Jussiv'},
+ {id:'impv',name:'Imperativ'}, {id:'adh',name:'Adhortativ'},
+ {id:'inf',name:'Infinitiv'}, {id:'part',name:'Partizip'}
+];
+// Morphologische Paradigmen nach Mäder, S. 68, 78, 98, 113–114 und 130–132.
+// {AL}/{BL}: Dagesch lene nur bei Begadkefat; {AD}/{BD}: Dagesch forte.
+// Die Muster verzichten bewusst auf schwache Wurzeln, Ausnahmewurzeln und sog. Pausalformen.
+const GRAMMAR = {
+ qal: {
+  perf: [['3. Sg. m.','{AL}ָ{B0}ַ{C0}'],['3. Sg. f.','{AL}ָ{B0}ְ{C0}ָה'],['2. Sg. m.','{AL}ָ{B0}ַ{C0}ְתָּ'],['2. Sg. f.','{AL}ָ{B0}ַ{C0}ְתְּ'],['1. Sg.','{AL}ָ{B0}ַ{C0}ְתִּי'],['3. Pl.','{AL}ָ{B0}ְ{C0}וּ'],['2. Pl. m.','{AL}ְ{B0}ַ{C0}ְתֶּם'],['1. Pl.','{AL}ָ{B0}ַ{C0}ְנוּ']],
+  impf: [['3. Sg. m.','יִ{A0}ְ{BL}ֹ{C0}'],['3. Sg. f. / 2. Sg. m.','תִּ{A0}ְ{BL}ֹ{C0}'],['2. Sg. f.','תִּ{A0}ְ{BL}ְ{C0}ִי'],['1. Sg.','אֶ{A0}ְ{BL}ֹ{C0}'],['3. Pl. m.','יִ{A0}ְ{BL}ְ{C0}וּ'],['1. Pl.','נִ{A0}ְ{BL}ֹ{C0}']],
+  impv: [['2. Sg. m.','{AL}ְ{B0}ֹ{C0}'],['2. Sg. f.','{AL}ִ{B0}ְ{C0}ִי'],['2. Pl. m.','{AL}ִ{B0}ְ{C0}וּ']],
+  part: [['Aktiv, Sg. m.','{AL}ֹ{B0}ֵ{C0}'],['Passiv, Sg. m.','{AL}ָ{B0}וּ{C0}']],
+  inf: [['Constructus','{AL}ְ{B0}ֹ{C0}']]
+ },
+ nif: {
+  perf: [['3. Sg. m.','נִ{A0}ְ{BL}ַ{C0}'],['3. Sg. f.','נִ{A0}ְ{BL}ְ{C0}ָה'],['2. Sg. m.','נִ{A0}ְ{BL}ַ{C0}ְתָּ'],['1. Sg.','נִ{A0}ְ{BL}ַ{C0}ְתִּי'],['3. Pl.','נִ{A0}ְ{BL}ְ{C0}וּ'],['1. Pl.','נִ{A0}ְ{BL}ַ{C0}ְנוּ']],
+  impf: [['3. Sg. m.','יִ{AD}ָ{B0}ֵ{C0}'],['3. Sg. f. / 2. Sg. m.','תִּ{AD}ָ{B0}ֵ{C0}'],['2. Sg. f.','תִּ{AD}ָ{B0}ְ{C0}ִי'],['1. Sg.','אֶ{AD}ָ{B0}ֵ{C0}'],['3. Pl. m.','יִ{AD}ָ{B0}ְ{C0}וּ'],['1. Pl.','נִ{AD}ָ{B0}ֵ{C0}']],
+  impv: [['2. Sg. m.','הִ{AD}ָ{B0}ֵ{C0}'],['2. Sg. f.','הִ{AD}ָ{B0}ְ{C0}ִי'],['2. Pl. m.','הִ{AD}ָ{B0}ְ{C0}וּ']],
+  part: [['Sg. m.','נִ{A0}ְ{BL}ָ{C0}']],
+  inf: [['Constructus','הִ{AD}ָ{B0}ֵ{C0}']]
+ },
+ piel: {
+  perf: [['3. Sg. m.','{AL}ִ{BD}ֵ{C0}'],['3. Sg. f.','{AL}ִ{BD}ְ{C0}ָה'],['2. Sg. m.','{AL}ִ{BD}ַ{C0}ְתָּ'],['1. Sg.','{AL}ִ{BD}ַ{C0}ְתִּי'],['3. Pl.','{AL}ִ{BD}ְ{C0}וּ'],['1. Pl.','{AL}ִ{BD}ַ{C0}ְנוּ']],
+  impf: [['3. Sg. m.','יְ{A0}ַ{BD}ֵ{C0}'],['3. Sg. f. / 2. Sg. m.','תְּ{A0}ַ{BD}ֵ{C0}'],['2. Sg. f.','תְּ{A0}ַ{BD}ְ{C0}ִי'],['1. Sg.','אֲ{A0}ַ{BD}ֵ{C0}'],['3. Pl. m.','יְ{A0}ַ{BD}ְ{C0}וּ'],['1. Pl.','נְ{A0}ַ{BD}ֵ{C0}']],
+  impv: [['2. Sg. m.','{AL}ַ{BD}ֵ{C0}'],['2. Sg. f.','{AL}ַ{BD}ְ{C0}ִי'],['2. Pl. m.','{AL}ַ{BD}ְ{C0}וּ']],
+  part: [['Sg. m.','מְ{A0}ַ{BD}ֵ{C0}']],
+  inf: [['Constructus','{AL}ַ{BD}ֵ{C0}']]
+ },
+ pual: {
+  perf: [['3. Sg. m.','{AL}ֻ{BD}ַ{C0}'],['3. Sg. f.','{AL}ֻ{BD}ְ{C0}ָה'],['2. Sg. m.','{AL}ֻ{BD}ַ{C0}ְתָּ'],['1. Sg.','{AL}ֻ{BD}ַ{C0}ְתִּי'],['3. Pl.','{AL}ֻ{BD}ְ{C0}וּ'],['1. Pl.','{AL}ֻ{BD}ַ{C0}ְנוּ']],
+  impf: [['3. Sg. m.','יְ{A0}ֻ{BD}ַ{C0}'],['3. Sg. f. / 2. Sg. m.','תְּ{A0}ֻ{BD}ַ{C0}'],['2. Sg. f.','תְּ{A0}ֻ{BD}ְ{C0}ִי'],['1. Sg.','אֲ{A0}ֻ{BD}ַ{C0}'],['3. Pl. m.','יְ{A0}ֻ{BD}ְ{C0}וּ'],['1. Pl.','נְ{A0}ֻ{BD}ַ{C0}']],
+  part: [['Sg. m.','מְ{A0}ֻ{BD}ָ{C0}']]
+ },
+ hit: {
+  perf: [['3. Sg. m.','הִתְ{AL}ַ{BD}ֵ{C0}'],['3. Sg. f.','הִתְ{AL}ַ{BD}ְ{C0}ָה'],['2. Sg. m.','הִתְ{AL}ַ{BD}ַ{C0}ְתָּ'],['1. Sg.','הִתְ{AL}ַ{BD}ַ{C0}ְתִּי'],['3. Pl.','הִתְ{AL}ַ{BD}ְ{C0}וּ'],['1. Pl.','הִתְ{AL}ַ{BD}ַ{C0}ְנוּ']],
+  impf: [['3. Sg. m.','יִתְ{AL}ַ{BD}ֵ{C0}'],['3. Sg. f. / 2. Sg. m.','תִּתְ{AL}ַ{BD}ֵ{C0}'],['2. Sg. f.','תִּתְ{AL}ַ{BD}ְ{C0}ִי'],['1. Sg.','אֶתְ{AL}ַ{BD}ֵ{C0}'],['3. Pl. m.','יִתְ{AL}ַ{BD}ְ{C0}וּ'],['1. Pl.','נִתְ{AL}ַ{BD}ֵ{C0}']],
+  impv: [['2. Sg. m.','הִתְ{AL}ַ{BD}ֵ{C0}'],['2. Sg. f.','הִתְ{AL}ַ{BD}ְ{C0}ִי'],['2. Pl. m.','הִתְ{AL}ַ{BD}ְ{C0}וּ']],
+  part: [['Sg. m.','מִתְ{AL}ַ{BD}ֵ{C0}']],
+  inf: [['Constructus','הִתְ{AL}ַ{BD}ֵ{C0}']]
+ },
+ hif: {
+  perf: [['3. Sg. m.','הִ{A0}ְ{BL}ִי{C0}'],['3. Sg. f.','הִ{A0}ְ{BL}ִי{C0}ָה'],['2. Sg. m.','הִ{A0}ְ{BL}ַ{C0}ְתָּ'],['1. Sg.','הִ{A0}ְ{BL}ַ{C0}ְתִּי'],['3. Pl.','הִ{A0}ְ{BL}ִי{C0}וּ'],['1. Pl.','הִ{A0}ְ{BL}ַ{C0}ְנוּ']],
+  impf: [['3. Sg. m.','יַ{A0}ְ{BL}ִי{C0}'],['3. Sg. f. / 2. Sg. m.','תַּ{A0}ְ{BL}ִי{C0}'],['2. Sg. f.','תַּ{A0}ְ{BL}ִי{C0}ִי'],['1. Sg.','אַ{A0}ְ{BL}ִי{C0}'],['3. Pl. m.','יַ{A0}ְ{BL}ִי{C0}וּ'],['1. Pl.','נַ{A0}ְ{BL}ִי{C0}']],
+  impv: [['2. Sg. m.','הַ{A0}ְ{BL}ֵ{C0}'],['2. Sg. f.','הַ{A0}ְ{BL}ִי{C0}ִי'],['2. Pl. m.','הַ{A0}ְ{BL}ִי{C0}וּ']],
+  part: [['Sg. m.','מַ{A0}ְ{BL}ִי{C0}']],
+  inf: [['Constructus','הַ{A0}ְ{BL}ִי{C0}']]
+ },
+ hof: {
+  perf: [['3. Sg. m.','הָ{A0}ְ{BL}ַ{C0}'],['3. Sg. f.','הָ{A0}ְ{BL}ְ{C0}ָה'],['2. Sg. m.','הָ{A0}ְ{BL}ַ{C0}ְתָּ'],['1. Sg.','הָ{A0}ְ{BL}ַ{C0}ְתִּי'],['3. Pl.','הָ{A0}ְ{BL}ְ{C0}וּ'],['1. Pl.','הָ{A0}ְ{BL}ַ{C0}ְנוּ']],
+  impf: [['3. Sg. m.','יָ{A0}ְ{BL}ַ{C0}'],['3. Sg. f. / 2. Sg. m.','תָּ{A0}ְ{BL}ַ{C0}'],['2. Sg. f.','תָּ{A0}ְ{BL}ְ{C0}ִי'],['1. Sg.','אָ{A0}ְ{BL}ַ{C0}'],['3. Pl. m.','יָ{A0}ְ{BL}ְ{C0}וּ'],['1. Pl.','נָ{A0}ְ{BL}ַ{C0}']],
+  part: [['Sg. m.','מָ{A0}ְ{BL}ָ{C0}']]
+ }
+};
+// Zusätzliche Befehlsformen nach Mäder, Lektionen 9, 13 und 15.
+// Kohortativ: 1. Person + -ָה; Adhortativ: Imperativ 2. Sg. m. + -ָה
+// mit regulärer Vokalangleichung. In passiven Stämmen kein Adhortativ.
+// Jussiv: Bei starken Verben meist identisch zum Imperfekt;
+// im Hifil (3./2. Sg. m.) ist der Stammvokal dagegen ē statt ī.
+const EXTRA = {
+ qal: {
+  coh: [['1. Sg.','אֶ{A0}ְ{BL}ְ{C0}ָה'],['1. Pl.','נִ{A0}ְ{BL}ְ{C0}ָה']],
+  adh: [['2. Sg. m.','{AL}ָ{B0}ְ{C0}ָה']]
+ },
+ nif: {
+  coh: [['1. Sg.','אִ{AD}ָ{B0}ְ{C0}ָה'],['1. Pl.','נִ{AD}ָ{B0}ְ{C0}ָה']],
+  adh: [['2. Sg. m.','הִ{AD}ָ{B0}ְ{C0}ָה']]
+ },
+ hif: {
+  coh: [['1. Sg.','אַ{A0}ְ{BL}ִי{C0}ָה'],['1. Pl.','נַ{A0}ְ{BL}ִי{C0}ָה']],
+  adh: [['2. Sg. m.','הַ{A0}ְ{BL}ִי{C0}ָה']]
+ },
+ hof: {
+  coh: [['1. Sg.','אָ{A0}ְ{BL}ְ{C0}ָה'],['1. Pl.','נָ{A0}ְ{BL}ְ{C0}ָה']]
+ },
+ piel: {
+  coh: [['1. Sg.','אֲ{A0}ַ{BD}ְ{C0}ָה'],['1. Pl.','נְ{A0}ַ{BD}ְ{C0}ָה']],
+  adh: [['2. Sg. m.','{AL}ַ{BD}ְ{C0}ָה']]
+ },
+ pual: {
+  coh: [['1. Sg.','אֲ{A0}ֻ{BD}ְ{C0}ָה'],['1. Pl.','נְ{A0}ֻ{BD}ְ{C0}ָה']]
+ },
+ hit: {
+  coh: [['1. Sg.','אֶתְ{AL}ַ{BD}ְ{C0}ָה'],['1. Pl.','נִתְ{AL}ַ{BD}ְ{C0}ָה']],
+  adh: [['2. Sg. m.','הִתְ{AL}ַ{BD}ְ{C0}ָה']]
+ }
+};
+// Die Infinitiv-Auswahl umfasst beide Infinitive, soweit das Lehrbuch sie
+// für die starken Verben angibt (passive Stämme: nur Absolutus).
+GRAMMAR.qal.inf.push(['Absolutus','{AL}ָ{B0}וֹ{C0}']);
+GRAMMAR.nif.inf.push(['Absolutus','הִ{AD}ָ{B0}ֵ{C0}']);
+GRAMMAR.hif.inf.push(['Absolutus','הַ{A0}ְ{BL}ֵ{C0}']);
+GRAMMAR.hof.inf=[['Absolutus','הָ{A0}ְ{BL}ֵ{C0}']];
+GRAMMAR.piel.inf.push(['Absolutus','{AL}ַ{BD}ֵ{C0}'],['Absolutus (Variante)','{AL}ַ{BD}ֹ{C0}']);
+GRAMMAR.pual.inf=[['Absolutus','{AL}ֻ{BD}ֹ{C0}']];
+GRAMMAR.hit.inf.push(['Absolutus','הִתְ{AL}ַ{BD}ֵ{C0}']);
+for(const stem of STEMS){
+ const grammar=GRAMMAR[stem.id];
+ Object.assign(grammar,EXTRA[stem.id]||{});
+ grammar.juss=grammar.impf.filter(([person])=>!person.startsWith('1.')).map(([person,pattern])=>{
+  if(stem.id==='hif' && (person==='3. Sg. m.' || person==='3. Sg. f. / 2. Sg. m.')){
+   pattern=pattern.replace('ִי{C0}','ֵ{C0}');
+  }
+  return [person,pattern];
+ });
+}
+const BEGAD = new Set(['ב','ג','ד','כ','פ','ת']);
+const FINALS = {כ:'ך',מ:'ם',נ:'ן',פ:'ף',צ:'ץ'};
+const DAGESH='\u05bc';
+const $=id=>document.getElementById(id);
+const random = n => Math.floor(Math.random()*n);
+const shuffle = a => {for(let i=a.length-1;i>0;i--){const j=random(i+1);[a[i],a[j]]=[a[j],a[i]];}return a;};
+function renderTemplate(tpl,verb){
+ let word=tpl.replace(/\{([ABC])([0LD])\}/g,(all,which,kind,offset)=>{
+   let letter=verb[which.toLowerCase()];
+   const remainder=tpl.slice(offset+all.length);
+   if(which==='C' && remainder.length===0 && FINALS[letter]) letter=FINALS[letter];
+   return letter+((kind==='D'||kind==='L' && BEGAD.has(letter))?DAGESH:'');
+ });
+ return word.normalize('NFC');
+}
+// Eine Karte steht für eine tatsächlich angezeigte Schreibweise pro Wurzel.
+// Mehrdeutige Wörter bleiben im Stapel: alle passenden Stämme müssen erkannt werden.
+ // Für mehrdeutige Antworten zählen ausschliesslich die ausgewählten
+ // Stämme UND Formtypen. Sonst wird kein zusätzlicher Stamm verlangt.
+function makeDeck(stems,verbs,forms){
+ const byWord=new Map();
+ for(const rootId of verbs){
+  const verb=VERBS.find(x=>x.id===rootId);
+  for(const stemId of stems){
+   for(const type of forms){
+    for(const [person,pattern] of GRAMMAR[stemId]?.[type]||[]){
+     const word=renderTemplate(pattern,verb);
+     const key=`${rootId}|${word.normalize('NFD')}`;
+     if(!byWord.has(key))byWord.set(key,{id:key,rootId,word,correctStems:[],seen:0,wrong:0,failStreak:0,correctStreak:0,dueAt:0});
+    }
+   }
+  }
+ }
+ // Alle richtigen Antworten müssen auch zum gewählten Formtypen-Set gehören.
+ for(const card of byWord.values()){
+  const verb=VERBS.find(v=>v.id===card.rootId);
+  for(const stemId of stems){
+   if(forms.some(formId=>(GRAMMAR[stemId]?.[formId]||[]).some(([,pattern])=>
+      renderTemplate(pattern,verb).normalize('NFD')===card.word.normalize('NFD')))){
+    card.correctStems.push(stemId);
+   }
+  }
+ }
+ // Die Ranglisten-ID enthält bewusst NIE die Verbwurzel.
+ // Morphologisch gleiche Formen verschiedener Verben teilen den Fehlerwert.
+ for(const card of byWord.values()){
+  const verb=VERBS.find(v=>v.id===card.rootId);
+  const signatures=new Set();
+  for(const stem of STEMS)for(const form of FORMS){
+   for(const [person,pattern] of GRAMMAR[stem.id]?.[form.id]||[]){
+    if(renderTemplate(pattern,verb).normalize('NFD')===card.word.normalize('NFD')){
+     signatures.add(`${stem.id}~${form.id}~${person}`);
+    }
+   }
+  }
+  card.formKey=[...signatures].sort().join('|');
+  card.formTitle=[...signatures].sort().map(signature=>{
+   const [stemId,type,person]=signature.split('~');
+   return `${STEMS.find(s=>s.id===stemId).name} · ${FORMS.find(f=>f.id===type).name} · ${person}`;
+  }).join(' / ');
+ }
+ return shuffle([...byWord.values()]);
+}
+// Ein Wort kann mehrere Lesarten haben. Beim Anzeigen der Lösung werden
+// nur die Formtypen berücksichtigt, die in dieser Runde aktiv sind.
+const ALL_ANALYSES = new Map();
+for(const verb of VERBS){
+ for(const stem of STEMS){
+  for(const form of FORMS){
+   for(const [person,pattern] of GRAMMAR[stem.id]?.[form.id]||[]){
+    const word=renderTemplate(pattern,verb).normalize('NFD');
+    const key=`${verb.id}|${stem.id}|${word}`;
+    if(!ALL_ANALYSES.has(key))ALL_ANALYSES.set(key,[]);
+    const analyses=ALL_ANALYSES.get(key);
+    if(!analyses.some(a=>a.type===form.id&&a.person===person))analyses.push({type:form.id,person});
+   }
+  }
+ }
+}
+function formLabel(c){return `${FORMS.find(x=>x.id===c.type)?.name||c.type}${c.person?' · '+c.person:''}`;}
+function fullAnalysis(c){
+ const key=`${c.rootId}|${c.stemId}|${c.word.normalize('NFD')}`;
+ const analyses=ALL_ANALYSES.get(key)||[{type:c.type,person:c.person}];
+ const selected=activeForms.length?analyses.filter(a=>activeForms.includes(a.type)):analyses;
+ return selected.map(formLabel).join(' / ');
+}
+function appendChoice(target,name,value,title,subtitle,selected,word=false){
+ const item=document.createElement('label');item.className='choice';
+ const inp=document.createElement('input');inp.type='checkbox';inp.name=name;inp.value=value;inp.checked=selected;
+ const inner=document.createElement('div');inner.className='pick';
+ const label=document.createElement('div');
+ if(word){const w=document.createElement('span');w.className='word';w.lang='he';w.dir='rtl';w.textContent=title;label.append(w);}
+ else {const txt=document.createElement('span');txt.className='txt';txt.textContent=title;label.append(txt);}
+ if(subtitle){const sub=document.createElement('span');sub.className='subtxt';sub.textContent=subtitle;label.append(sub);}
+ const tick=document.createElement('span');tick.className='tick';tick.setAttribute('aria-hidden','true');
+ inner.append(label,tick);item.append(inp,inner);$(target).append(item);
+}
+// Speichert ausschliesslich die gewählten Stämme, Wurzeln und Formtypen lokal.
+// Nicht verfügbarer Browserspeicher (z. B. durch Datenschutzeinstellungen)
+// verhindert das Training nicht.
+const SETTINGS_KEY='bibelhebraeisch-stammtrainer-auswahl-v1';
+const RANK_KEY='bibelhebraeisch-stammtrainer-formfehler-v1';
+const WEIGHTS=new Set(['0','1','3','7','12']);
+function readRank(){
+ try{
+  const value=JSON.parse(localStorage.getItem(RANK_KEY)||'{}');
+  if(!value || typeof value!=='object' || Array.isArray(value))return {};
+  const out={};
+  for(const [key,item] of Object.entries(value)){
+   if(typeof key==='string' && key.length<750 && item && Number.isSafeInteger(item.errors) && item.errors>0 && item.errors<100000000){
+    out[key]={errors:item.errors,label:typeof item.label==='string'?item.label.slice(0,500):key,
+     successes:Number.isInteger(item.successes)?Math.max(0,Math.min(3,item.successes)):0,
+     mastered:item.mastered===true};
+   }
+  }
+  return out;
+ }catch{return {};}
+}
+let rankData=readRank();
+function persistRank(){try{localStorage.setItem(RANK_KEY,JSON.stringify(rankData));}catch{}}
+function ranked(){return Object.entries(rankData).filter(([,v])=>v.errors>0).sort((a,b)=>b[1].errors-a[1].errors||a[1].label.localeCompare(b[1].label,'de'));}
+function refreshRankSummary(){
+ const n=ranked().length;
+ $('rankSideInfo').textContent=n?`${n} Fehlerformen gespeichert, unabhängig von der gewählten Verbwurzel.`:'Noch keine Fehler gespeichert. Formen werden nach dem ersten Fehler aufgenommen.';
+}
+// Die Rangliste zeigt zu jeder Form eine Schreibung von כָּתַב; die Wurzel
+// selbst wird weder im Fehler-Schlüssel noch in der Fehler-Zählung gespeichert.
+function exampleForFormKey(key){
+ const writing=VERBS.find(v=>v.id==='ktb');
+ for(const item of key.split('|')){
+  const [stemId,formId,person]=item.split('~');
+  const record=(GRAMMAR[stemId]?.[formId]||[]).find(([p])=>p===person);
+  if(record)return renderTemplate(record[1],writing);
+ }
+ return writing.label;
+}
+function renderRankList(){
+ const list=$('rankList');list.replaceChildren();
+ const entries=ranked();
+ $('resetRankBtn').disabled=entries.length===0;
+ if(!entries.length){const el=document.createElement('p');el.className='rank-empty';el.textContent='Noch keine Fehler in der Rangliste.';list.append(el);}
+ entries.forEach(([key,item],i)=>{
+  const row=document.createElement('div');row.className='rank-item';
+  const place=document.createElement('b');place.textContent=String(i+1)+'.';
+  const description=document.createElement('div');description.className='rank-desc';
+  const title=document.createElement('b');title.textContent=item.label;
+  const example=document.createElement('div');example.className='rank-example';
+  const prefix=document.createElement('span');prefix.textContent='Beispiel mit schreiben:';
+  const he=document.createElement('span');he.className='rank-example-he';he.lang='he';he.dir='rtl';he.textContent=exampleForFormKey(key);
+  example.append(prefix,he);description.append(title,example);
+  if(item.mastered){const status=document.createElement('span');status.className='rank-mastered';status.textContent='✓ Fehler gemeistert';description.append(status);}
+  const amount=document.createElement('span');amount.className='rank-count';amount.textContent=`${item.errors} ×`;
+  const remove=document.createElement('button');remove.type='button';remove.className='rank-remove';remove.textContent='Löschen';
+  remove.setAttribute('aria-label',`Fehlerform ${item.label} aus der Rangliste löschen`);
+  remove.addEventListener('click',()=>{
+   if(!confirm('Diese Fehlerform aus der Rangliste löschen?'))return;
+   deleteRankKeys([key]);renderRankList();
+  });
+  row.append(place,description,amount,remove);list.append(row);
+ });
+}
+function showRank(){renderRankList();if(!$('rankDialog').open)$('rankDialog').showModal();}
+function closeMenu(){
+ $('settingsMenu').classList.add('hidden');$('menuBtn').setAttribute('aria-expanded','false');
+}
+$('menuBtn').addEventListener('click',e=>{
+ e.stopPropagation();const isOpen=!$('settingsMenu').classList.contains('hidden');
+ $('settingsMenu').classList.toggle('hidden',isOpen);$('menuBtn').setAttribute('aria-expanded',String(!isOpen));
+});
+document.addEventListener('pointerdown',e=>{if(!$('menuWrap').contains(e.target))closeMenu();});
+$('helpBtn').addEventListener('click',()=>{closeMenu();$('helpDialog').showModal();});
+for(const id of ['closeHelpBtn','closeHelpBottom'])$(id).addEventListener('click',()=>$('helpDialog').close());
+$('rankBtnMenu').addEventListener('click',()=>{closeMenu();showRank();});
+$('rankBtnSide').addEventListener('click',showRank);
+for(const id of ['closeRankBtn','closeRankBottom'])$(id).addEventListener('click',()=>$('rankDialog').close());
+// Manuell entfernte Ranglisten-Einträge bleiben auch nach Ctrl+Z / Ctrl+Y
+// gelöscht: alle älteren Checkpoints und Vorwärts-Snapshots werden bereinigt.
+function deleteRankKeys(keys){
+ const removed=new Set(keys);
+ for(const key of removed)delete rankData[key];
+ for(const checkpoint of history){
+  const card=cards.find(c=>c.id===checkpoint.id);
+  if(card&&removed.has(card.formKey))checkpoint.rankBefore=null;
+ }
+ for(const future of redoStack){
+  const card=cards.find(c=>c.id===future.entry.id);
+  if(card&&removed.has(card.formKey))future.entry.rankBefore=null;
+  for(const key of removed)delete future.ranks[key];
+ }
+ persistRank();refreshRankSummary();
+}
+$('resetRankBtn').addEventListener('click',()=>{
+ if(confirm('Alle gespeicherten Fehlerformen aus der Rangliste löschen?')){
+  deleteRankKeys(Object.keys(rankData));renderRankList();
+ }
+});
+refreshRankSummary();
+const CHOICE_IDS={
+ stem:new Set(STEMS.map(s=>s.id)),
+ verb:new Set(VERBS.map(v=>v.id)),
+ form:new Set(FORMS.map(f=>f.id))
+};
+function loadSettings(){
+ try{
+  const json=localStorage.getItem(SETTINGS_KEY);
+  if(json===null)return null;
+  const saved=JSON.parse(json);
+  if(!saved || typeof saved!=='object')return null;
+  const result={};
+  for(const kind of ['stem','verb','form']){
+   if(!Array.isArray(saved[kind]))return null;
+   result[kind]=saved[kind].filter(id=>typeof id==='string'&&CHOICE_IDS[kind].has(id));
+  }
+  result.rankWeight=WEIGHTS.has(String(saved.rankWeight))?String(saved.rankWeight):'3';
+  result.gamification=saved.gamification!==false;
+  return result;
+ }catch{return null;}
+}
+const savedSettings=loadSettings();
+const initiallyChecked=(kind,id)=>!savedSettings || savedSettings[kind].includes(id);
+$('rankWeight').value=savedSettings?.rankWeight||'3';
+$('gamificationToggle').checked=savedSettings?.gamification!==false;
+STEMS.forEach(s=>appendChoice('stemChoices','stem',s.id,s.name,'',initiallyChecked('stem',s.id)));
+VERBS.forEach(v=>appendChoice('verbChoices','verb',v.id,v.label,v.gloss,initiallyChecked('verb',v.id),true));
+FORMS.forEach(f=>appendChoice('formChoices','form',f.id,f.name,'',initiallyChecked('form',f.id)));
+const checked=name=>[...document.querySelectorAll(`input[name="${name}"]:checked`)].map(x=>x.value);
+function saveSettings(){
+ const settings={stem:checked('stem'),verb:checked('verb'),form:checked('form'),rankWeight:$('rankWeight').value,gamification:$('gamificationToggle').checked};
+ try{
+  localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));
+  $('saveStatus').textContent='Deine Auswahl wird in diesem Browser automatisch gespeichert.';
+ }catch{
+  $('saveStatus').textContent='Der Browser verhindert das Speichern. Die Auswahl gilt nur bis zum Schliessen.';
+ }
+}
+$('rankWeight').addEventListener('change',()=>{activeWeight=Number($('rankWeight').value);saveSettings();});
+$('gamificationToggle').addEventListener('change',()=>{saveSettings();applyGamificationVisibility();});
+document.querySelectorAll('input[name="stem"],input[name="verb"],input[name="form"]').forEach(input=>{
+ input.addEventListener('change',saveSettings);
+});
+document.querySelectorAll('[data-check]').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll(`input[name="${btn.dataset.group}"]`).forEach(x=>x.checked=btn.dataset.check==='true');
+ saveSettings();
+}));
+// Auch ohne Änderung eine Erstauswahl für den nächsten Besuch hinterlegen.
+if(savedSettings===null)saveSettings();
+let cards=[],current=null,answerLocked=false,lastGood=false,selectedStems=new Set(),step=0,correct=0,wrong=0,streak=0,repeatCount=0,flashTimer=null,achievementTimer=null,popTimer=null,activeStems=[],activeForms=[],activeWeight=3,stemStats={},history=[],redoStack=[],lastChosenStem=null;
+const CARD_FIELDS=['seen','wrong','failStreak','correctStreak','dueAt'];
+const captureCard=c=>Object.fromEntries(CARD_FIELDS.map(k=>[k,c[k]]));
+function restoreCard(card,snapshot){for(const key of CARD_FIELDS)card[key]=snapshot[key];}
+function copyStemStats(stats){return Object.fromEntries(Object.entries(stats).map(([key,item])=>[key,{...item}]));}
+function updateStemProgress(){
+ const panel=$('stemProgress');panel.replaceChildren();
+ for(const s of STEMS.filter(stem=>activeStems.includes(stem.id))){
+  const item=stemStats[s.id]||{attempts:0,right:0};
+  const line=document.createElement('div');line.className='stem-progress-row';
+  const header=document.createElement('div');header.className='stem-progress-head';
+  const name=document.createElement('strong');name.textContent=s.name;
+  const pct=document.createElement('span');pct.textContent=item.attempts?`${Math.round(item.right*100/item.attempts)} % · ${item.attempts}`:'Noch offen';
+  const track=document.createElement('div');track.className='stem-progress-track';
+  const fill=document.createElement('div');fill.className='stem-progress-fill';fill.style.width=(item.attempts?100*item.right/item.attempts:0)+'%';
+  header.append(name,pct);track.append(fill);line.append(header,track);panel.append(line);
+ }
+}
+function clearGameEffects(){
+ clearTimeout(achievementTimer);clearTimeout(popTimer);
+ $('achievement').classList.add('hidden');$('achievement').classList.remove('run');
+ $('successPop').classList.add('hidden');$('successPop').classList.remove('run');
+}
+function applyGamificationVisibility(){
+ const enabled=$('gamificationToggle').checked;
+ $('stemProgressCard').classList.toggle('hidden',!enabled||$('study').classList.contains('hidden'));
+ if(!enabled)clearGameEffects();
+}
+function showPop(){
+ if(!$('gamificationToggle').checked)return;
+ const el=$('successPop');clearTimeout(popTimer);el.classList.remove('hidden','run');void el.offsetWidth;el.classList.add('run');
+ popTimer=setTimeout(()=>el.classList.add('hidden'),960);
+}
+function showAchievement(message){
+ if(!$('gamificationToggle').checked)return;
+ const el=$('achievement');clearTimeout(achievementTimer);el.textContent=message;el.classList.remove('hidden','run');void el.offsetWidth;el.classList.add('run');
+ achievementTimer=setTimeout(()=>el.classList.add('hidden'),2650);
+}
+function updateStats(){const total=correct+wrong;$('accuracy').textContent=total?`${Math.round(correct*100/total)}%`:'–';$('accuracyBar').style.width=(total?100*correct/total:0)+'%';$('answered').textContent=total===0?'Noch keine Antworten':`${total} Antworten insgesamt`;$('correctStat').textContent=correct;$('wrongStat').textContent=wrong;$('streakStat').textContent=streak;$('repeatStat').textContent=repeatCount;updateStemProgress();}
+function resetSession(){step=0;correct=0;wrong=0;streak=0;repeatCount=0;current=null;answerLocked=false;lastGood=false;stemStats=Object.fromEntries(activeStems.map(id=>[id,{attempts:0,right:0}]));history=[];redoStack=[];lastChosenStem=null;selectedStems.clear();clearTimeout(flashTimer);clearGameEffects();updateStats();}
+function startSession(){
+ const stems=checked('stem'),verbs=checked('verb'),forms=checked('form');
+ if(!stems.length||!verbs.length||!forms.length){$('warning').textContent='Wähle mindestens einen Stamm, ein Verb und eine Form.';return;}
+ cards=makeDeck(stems,verbs,forms);
+ if(!cards.length){$('warning').textContent='Diese Auswahl enthält keine regelmässigen Übungsformen.';return;}
+ activeStems=stems;activeForms=forms;activeWeight=Number($('rankWeight').value);resetSession();$('warning').textContent='';
+ $('setup').classList.add('hidden');$('study').classList.remove('hidden');$('menuSelectionBtn').classList.remove('hidden');applyGamificationVisibility();
+ const tags=[`${stems.length} ${stems.length===1?'Stamm':'Stämme'}`,`${verbs.length} ${verbs.length===1?'Wurzel':'Wurzeln'}`,`${forms.length} Formtypen`];
+ $('selectedTags').replaceChildren(...tags.map(s=>{const el=document.createElement('span');el.className='tag';el.textContent=s;return el;}));
+ $('sessionInfo').textContent=`${cards.length} unterschiedliche Übungsformen · kein Ende`;
+ showNext();
+}
+function weightedPick(options){
+ const list=ranked();
+ const places=new Map(list.map(([key,item],i)=>[key,{place:i,total:list.length,errors:item.errors}]));
+ let weights=[],total=0;
+ for(const card of options){
+  const record=places.get(card.formKey);
+  const strength=record ? (1-record.place/record.total) : 0;
+  const boost=record&&activeWeight>0 ? activeWeight*(0.2+0.8*Math.pow(strength,1.6))*(1+Math.log2(record.errors)/5) : 0;
+  // Jede noch nicht gelernte Karte hat eine positive Auswahlwahrscheinlichkeit.
+  const weight=(card.seen===0?1.3:1)+boost+(card.failStreak>0?card.failStreak*2:0);
+  weights.push(weight);total+=weight;
+ }
+ let r=Math.random()*total;
+ for(let i=0;i<options.length;i++){r-=weights[i];if(r<0)return options[i];}
+ return options[options.length-1];
+}
+function pickNext(){
+ const options=cards.filter(c=>cards.length===1||c!==current);
+ // Aktuelle Fehler müssen nach 1–3 Karten wiederkehren, wiederholte Fehler früher.
+ const urgent=options.filter(c=>c.failStreak>0 && c.seen>0 && c.dueAt<=step);
+ if(urgent.length)return weightedPick(urgent);
+ const available=options.filter(c=>c.seen===0||c.dueAt<=step);
+ if(available.length)return weightedPick(available);
+ const soonest=Math.min(...options.map(c=>c.dueAt));
+ return weightedPick(options.filter(c=>c.dueAt===soonest));
+}
+function questionCheckpoint(card){
+ const oldRank=rankData[card.formKey];
+ history.push({id:card.id,step,stats:{correct,wrong,streak,repeatCount,stemStats:copyStemStats(stemStats)},cardBefore:captureCard(card),rankBefore:oldRank?{...oldRank}:null});
+}
+function updateUndoButton(){
+ $('undoBtn').disabled=history.length<2&&!answerLocked&&selectedStems.size===0;
+ $('redoBtn').disabled=redoStack.length===0;
+}
+function renderQuestion(){
+ clearTimeout(flashTimer);clearGameEffects();$('study').classList.remove('flash-correct','flash-wrong');
+ answerLocked=false;lastGood=false;lastChosenStem=null;selectedStems.clear();
+ $('hebrewWord').textContent=current.word;$('questionCount').textContent=`Frage ${step}`;
+ $('feedback').className='feedback';$('feedbackText').textContent='Wähle einen Stamm.';
+ $('nextBtn').classList.add('hidden');$('shortcut').textContent='';$('shortcut').classList.add('hidden');
+ const container=$('answerButtons');container.replaceChildren();
+ STEMS.filter(s=>activeStems.includes(s.id)).forEach((s,i)=>{
+  const btn=document.createElement('button');btn.type='button';btn.className='answer';btn.dataset.stem=s.id;btn.textContent=s.name;
+  const number=document.createElement('span');number.className='answer-number';number.textContent=String(i+1);number.setAttribute('aria-hidden','true');btn.append(number);
+  btn.setAttribute('aria-label',`Taste ${i+1}: ${s.name}`);btn.addEventListener('click',()=>answer(s.id));container.append(btn);
+ });
+ updateUndoButton();updateStats();
+}
+function showNext(){
+ if(current && !answerLocked)return;
+ // Neue Frage ab hier bedeutet einen neuen Zweig nach Rückgängig.
+ redoStack=[];
+ step+=1;const next=pickNext();if(!next)return;
+ current=next;if(next.seen>0)repeatCount++;
+ next.seen++;questionCheckpoint(next);renderQuestion();
+}
+function restoreRank(entry){
+ const card=cards.find(c=>c.id===entry.id);
+ if(!card)return;
+ if(entry.rankBefore)rankData[card.formKey]={...entry.rankBefore};
+ else delete rankData[card.formKey];
+}
+function restoreEntry(entry){
+ const card=cards.find(c=>c.id===entry.id);
+ if(!card)return;
+ restoreCard(card,entry.cardBefore);
+ restoreRank(entry);
+ ({correct,wrong,streak,repeatCount}=entry.stats);stemStats=copyStemStats(entry.stats.stemStats);
+ step=entry.step;current=card;
+ persistRank();refreshRankSummary();renderQuestion();
+}
+// Im Verlauf werden nur die veränderten Karten gespeichert, nicht der
+// gesamte (potenziell grosse) Übungsstapel. Strg+Y stellt genau den durch
+// Strg+Z verlassenen Zustand inkl. Statistik und Fehlerliste wieder her.
+function captureView(){
+ return {cardAfter:captureCard(current),stats:{correct,wrong,streak,repeatCount,stemStats:copyStemStats(stemStats)},
+  locked:answerLocked,good:lastGood,selected:[...selectedStems],chosen:lastChosenStem};
+}
+function copyRanks(){return Object.fromEntries(Object.entries(rankData).map(([k,v])=>[k,{...v}]));}
+function restoreView(entry,view,ranks){
+ const card=cards.find(c=>c.id===entry.id);
+ if(!card)return;
+ restoreCard(card,view.cardAfter);
+ rankData=copyRankObject(ranks);
+ ({correct,wrong,streak,repeatCount}=view.stats);stemStats=copyStemStats(view.stats.stemStats);
+ step=entry.step;current=card;
+ persistRank();refreshRankSummary();renderQuestion();
+ answerLocked=view.locked;lastGood=view.good;
+ selectedStems=new Set(view.selected);lastChosenStem=view.chosen;
+ if(answerLocked)paintResult(lastChosenStem,lastGood);
+ else if(selectedStems.size)paintPending();
+ updateUndoButton();updateStats();
+}
+function copyRankObject(src){return Object.fromEntries(Object.entries(src).map(([k,v])=>[k,{...v}]));}
+function undo(){
+ if(!history.length)return;
+ if(history.length===1 && !answerLocked && selectedStems.size===0)return;
+ const present=history[history.length-1];
+ const view=captureView(), ranks=copyRanks();
+ if(history.length===1){
+  redoStack.push({kind:'same',entry:present,view,ranks});
+  restoreEntry(present);
+  updateUndoButton();return;
+ }
+ const previous=history[history.length-2];
+ const previousCard=cards.find(c=>c.id===previous.id);
+ const previousAfter=captureCard(previousCard);
+ const old=history.pop();
+ redoStack.push({kind:'advance',entry:old,view,ranks,previousId:previous.id,previousAfter});
+ const leaving=cards.find(c=>c.id===old.id);
+ restoreCard(leaving,old.cardBefore);leaving.seen=Math.max(0,leaving.seen-1);
+ restoreRank(old);
+ restoreEntry(previous);
+ updateUndoButton();
+}
+function redo(){
+ if(!redoStack.length)return;
+ const future=redoStack.pop();
+ if(future.kind==='advance'){
+  const previous=cards.find(c=>c.id===future.previousId);
+  if(previous)restoreCard(previous,future.previousAfter);
+  history.push(future.entry);
+ }
+ restoreView(future.entry,future.view,future.ranks);
+}
+function paintPending(){
+ const text=$('feedbackText');text.replaceChildren();
+ const b=document.createElement('b');b.textContent='Weitere richtige Antwort nötig.';
+ const instruction=document.createElement('span');instruction.className='analysis-instruction';
+ instruction.textContent='Wähle auch die übrigen passenden Stämme.';
+ text.append(b,instruction);$('feedback').className='feedback pending';
+ for(const btn of $('answerButtons').querySelectorAll('button')){
+  if(selectedStems.has(btn.dataset.stem)){
+   btn.disabled=true;btn.classList.add('pending');btn.setAttribute('aria-pressed','true');
+  }
+ }
+}
+function paintResult(stemId,good){
+ for(const btn of $('answerButtons').querySelectorAll('button')){
+  btn.disabled=true;btn.classList.remove('pending');
+  if(current.correctStems.includes(btn.dataset.stem))btn.classList.add('correct');
+  else if(btn.dataset.stem===stemId)btn.classList.add('wrong');
+ }
+ $('feedback').className='feedback '+(good?'good':'bad');
+ const verb=VERBS.find(v=>v.id===current.rootId);
+ const names=current.correctStems.map(id=>STEMS.find(s=>s.id===id).name);
+ const text=$('feedbackText');text.replaceChildren();
+ const heading=document.createElement('b');
+ heading.textContent=good?'Richtig.':`Falsch. Richtig: ${names.join(' und ')}.`;
+ text.append(heading);
+ for(const id of current.correctStems){
+  const label=document.createElement('span');label.className='analysis-line';
+  const strong=document.createElement('strong');strong.textContent=STEMS.find(s=>s.id===id).name+' · ';
+  label.append(strong,document.createTextNode(fullAnalysis({...current,stemId:id})));text.append(label);
+ }
+ const root=document.createElement('span');root.className='analysis-instruction';
+ root.textContent=`Wurzel ${verb.root} (${verb.gloss})`;
+ text.append(root);
+ $('shortcut').classList.add('hidden');$('nextBtn').classList.remove('hidden');
+ $('nextBtn').textContent=good?'Nächste Form · Ziffer 0–9 →':'Nächste Form · Enter / Leertaste →';
+}
+function answer(stemId){
+ if(answerLocked||!current||selectedStems.has(stemId))return;
+ // Eine neue Antwort nach dem Rückwärtsgehen verwirft den Vorwärtsverlauf.
+ redoStack=[];
+ const valid=current.correctStems.includes(stemId);
+ lastChosenStem=stemId;
+ if(valid){
+  selectedStems.add(stemId);
+  if(selectedStems.size<current.correctStems.length){
+   paintPending();updateUndoButton();return;
+  }
+ }
+ const good=valid&&selectedStems.size===current.correctStems.length;
+ answerLocked=true;lastGood=good;
+ const card=$('study');card.classList.remove('flash-correct','flash-wrong');void card.offsetWidth;
+ card.classList.add(good?'flash-correct':'flash-wrong');clearTimeout(flashTimer);
+ flashTimer=setTimeout(()=>card.classList.remove('flash-correct','flash-wrong'),850);
+ let masteredNow=false;
+ if(good){
+  correct++;streak++;current.failStreak=0;current.correctStreak++;current.dueAt=step+Math.min(55,11+current.correctStreak*6)+random(5);
+  // Dreimal korrekt seit dem letzten Fehler (unabhängig von der Wurzel).
+  const entry=rankData[current.formKey];
+  if(entry&&entry.errors>0){
+   const oldMastered=entry.mastered===true;
+   entry.successes=Math.min(3,(entry.successes||0)+1);
+   entry.mastered=entry.successes>=3;
+   masteredNow=!oldMastered&&entry.mastered;
+   persistRank();
+  }
+ }
+ else{
+  wrong++;streak=0;current.wrong++;current.failStreak++;current.correctStreak=0;
+  current.dueAt=step+Math.max(1,5-current.failStreak*2);
+  const old=rankData[current.formKey];
+  rankData[current.formKey]={errors:(old?.errors||0)+1,label:current.formTitle,successes:0,mastered:false};
+  persistRank();refreshRankSummary();
+ }
+ for(const id of current.correctStems){
+  if(!stemStats[id])stemStats[id]={attempts:0,right:0};
+  stemStats[id].attempts++;
+  if(good)stemStats[id].right++;
+ }
+ paintResult(stemId,good);
+ if(good){
+  showPop();
+  if(masteredNow)showAchievement('Fehler gemeistert');
+  else if(streak>=5&&streak%5===0)showAchievement(`${streak} richtige in Folge`);
+ }
+ updateUndoButton();updateStats();
+}
+$('nextBtn').addEventListener('click',()=>{if(answerLocked)showNext();});
+$('undoBtn').addEventListener('click',undo);
+$('redoBtn').addEventListener('click',redo);
+$('startBtn').addEventListener('click',startSession);
+$('menuSelectionBtn').addEventListener('click',()=>{
+ closeMenu();clearTimeout(flashTimer);clearGameEffects();$('study').classList.add('hidden');$('setup').classList.remove('hidden');$('menuSelectionBtn').classList.add('hidden');$('warning').textContent='';applyGamificationVisibility();
+});
+document.addEventListener('keydown',e=>{
+ if(!$('rankDialog').open && !$('helpDialog').open && $('settingsMenu').classList.contains('hidden') && !$('study').classList.contains('hidden') && (e.ctrlKey||e.metaKey) && !e.altKey){
+  const key=e.key.toLowerCase();
+  if(key==='z'||key==='y'){
+   if(!e.target.matches('input,textarea,select')){
+    e.preventDefault();if(key==='z')undo();else redo();
+   }
+   return;
+  }
+ }
+ if(e.key==='Escape'&&!$('settingsMenu').classList.contains('hidden')){closeMenu();return;}
+ if($('rankDialog').open||$('helpDialog').open||!$('settingsMenu').classList.contains('hidden')||$('study').classList.contains('hidden')||e.altKey||e.ctrlKey||e.metaKey||e.target.matches('input,textarea,select'))return;
+ if(answerLocked){
+  const digit=/^[0-9]$/.test(e.key) || /^Numpad[0-9]$/.test(e.code);
+  const space=e.key===' '||e.code==='Space';
+  const enter=e.key==='Enter'||e.code==='NumpadEnter';
+  // Richtig: nur Ziffern; falsch: Enter oder Leertaste.
+  // Auch die Standardaktivierung von fokussierten Buttons verhindern.
+  if(digit||space||enter){
+   e.preventDefault();
+   if((lastGood&&digit)||(!lastGood&&(enter||space)))showNext();
+  }
+  return;
+ }
+ // Beim Antworten sind die sieben Knöpfe den Tasten 1–7 zugeordnet.
+ const digit=/^[1-7]$/.test(e.key)?Number(e.key):/^Numpad[1-7]$/.test(e.code)?Number(e.code.slice(-1)):null;
+ if(digit!==null){
+  const btn=$('answerButtons').querySelectorAll('button')[digit-1];
+  if(btn){e.preventDefault();btn.click();}
+ }
+});
+</script>
+</body>
+</html>
