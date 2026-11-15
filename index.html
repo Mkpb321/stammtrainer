@@ -60,7 +60,7 @@
       <p>Die grünen Antwortknöpfe lassen sich auch mit <kbd>Tab</kbd> auswählen und mit <kbd>Enter</kbd> oder <kbd>Leertaste</kbd> aktivieren.</p></section>
     <section><h3>Zurück und vorwärts</h3><p>Mit <kbd>Strg</kbd> + <kbd>Z</kbd> gehst du mehrere Karten zurück. Mit <kbd>Strg</kbd> + <kbd>Y</kbd> gehst du wieder vorwärts. Auf dem Mac verwendest du <kbd>⌘</kbd> statt Strg. Wenn du nach dem Zurückgehen neu antwortest, geht es von dort weiter.</p></section>
     <section><h3>Fehler-Rangliste</h3><p>Fehler werden als <strong>Stamm, Form und Person</strong> gespeichert, unabhängig vom Verb. In der Rangliste steht zu jedem Eintrag eine passende hebräische Beispielform von <strong>כָּתַב (schreiben)</strong>. Einzelne Einträge kannst du über „Löschen“ entfernen; „Alle löschen“ entfernt die gesamte Liste. Im Menü stellst du ein, wie oft Fehler wiederkehren. Andere Formen bleiben ebenfalls dabei.</p></section><section><h3>Gamification</h3><p>Schalte im Burger-Menü oben rechts „Gamification“ an oder aus. Mit Gamification gibt es nach richtigen Antworten einen kurzen Haken, Hinweise bei Erfolgsserien und eine Trefferquote pro Stamm. Wenn du eine früher falsch beantwortete grammatische Form <strong>dreimal hintereinander richtig</strong> bestimmst, erscheint „Fehler gemeistert“. Deine Auswahl bleibt im Browser gespeichert.</p></section>
-    <section><h3>Hinweise zu den Formen</h3><p>Die Übung verwendet vokalisierte, regelmässige Musterformen. Nicht jede Form muss im Bibeltext belegt sein. Bestimmte Formen, etwa Jussiv und Imperfekt, können ohne Kontext gleich aussehen. Grundlage sind die entsprechenden Lektionen aus Barbara Mäders <em>Alttestamentliches Hebräisch</em>.</p></section>
+    <section><h3>Hinweise zu den Formen</h3><p>Die Übung verwendet vokalisierte, regelmässige Musterformen. Nicht jede Form muss im Bibeltext belegt sein. Bestimmte Formen, etwa Jussiv und Imperfekt, können ohne Kontext gleich aussehen.</p><p><strong>Waw-Perfekt</strong> wird mit dem verbindenden Waw vor der Perfektform gebildet (<span lang="he" dir="rtl">וְכָתַב</span>). Die Form ist ohne Kontext oft nicht von „und“ + Perfekt zu unterscheiden; teils hilft die Betonung.</p><p><strong>Waw-Imperfekt</strong> hat das narrative Waw mit Patach und in der Regel eine Verdoppelung des folgenden Präformativs (<span lang="he" dir="rtl">וַיִּכְתֹּב</span>). Vor Aleph steht stattdessen Qamets (<span lang="he" dir="rtl">וָאֶכְתֹּב</span>); im Hifil treten verkürzte Formen auf.</p><p>Grundlage sind die entsprechenden Lektionen aus Barbara Mäders <em>Alttestamentliches Hebräisch</em>, besonders Lektionen 8, 9 und 13.</p></section>
   </div>
   <div class="help-footer"><button type="button" id="closeHelpBottom" class="primary">Verstanden</button></div>
 </dialog>
@@ -85,12 +85,13 @@ const VERBS = [
  {id:'bdl',root:'בדל',label:'בָּדַל',gloss:'trennen',a:'ב',b:'ד',c:'ל'}
 ];
 const FORMS = [
- {id:'perf',name:'Perfekt'}, {id:'impf',name:'Imperfekt'},
+ {id:'perf',name:'Perfekt'}, {id:'wperf',name:'Waw-Perfekt'},
+ {id:'impf',name:'Imperfekt'}, {id:'wimpf',name:'Waw-Imperfekt'},
  {id:'coh',name:'Kohortativ'}, {id:'juss',name:'Jussiv'},
  {id:'impv',name:'Imperativ'}, {id:'adh',name:'Adhortativ'},
  {id:'inf',name:'Infinitiv'}, {id:'part',name:'Partizip'}
 ];
-// Morphologische Paradigmen nach Mäder, S. 68, 78, 98, 113–114 und 130–132.
+// Morphologische Paradigmen nach Mäder, S. 68–70, 78–80, 98, 113–114 und 130–132.
 // {AL}/{BL}: Dagesch lene nur bei Begadkefat; {AD}/{BD}: Dagesch forte.
 // Die Muster verzichten bewusst auf schwache Wurzeln, Ausnahmewurzeln und sog. Pausalformen.
 const GRAMMAR = {
@@ -191,6 +192,27 @@ EXTRA.huf={coh:EXTRA.hof.coh.map(([person,pattern])=>[person,hufalPattern(patter
 GRAMMAR.piel.inf.push(['Absolutus','{AL}ַ{BD}ֵ{C0}'],['Absolutus (Variante)','{AL}ַ{BD}ֹ{C0}']);
 GRAMMAR.pual.inf=[['Absolutus','{AL}ֻ{BD}ֹ{C0}']];
 GRAMMAR.hit.inf.push(['Absolutus','הִתְ{AL}ַ{BD}ֵ{C0}']);
+// Waw-Perfekt: Waw conjunctivum vor den Perfektformen. Die Wahl zwischen
+// Schwa und Schuruq sowie der Wegfall eines anlautenden Dagesch lene wird
+// mit dem konkreten Wurzelkonsonanten erst beim Rendern berücksichtigt.
+function wawPerfectPattern(pattern){
+ return 'וְ'+pattern.replace(/^\{AL\}/,'{A0}');
+}
+// Waw-Imperfekt: Waw consecutivum mit Patach und Verdoppelung des
+// Präformativs (vor Aleph ersatzweise Qamets). Über mobilem Schwa fällt
+// das Dagesch forte normalerweise aus; bestehendes Dagesch im Taw bleibt.
+// Das Hifil bildet die suffixlosen Waw-Imperfekte mit kurzem Stammvokal ē.
+function wawImperfectPattern(pattern,stemId,person){
+ if(stemId==='hif' && ['3. Sg. m.','3. Sg. f. / 2. Sg. m.','1. Sg.','1. Pl.'].includes(person)){
+  pattern=pattern.replace('ִי{C0}','ֵ{C0}');
+ }
+ const prefix=pattern[0];
+ if(prefix==='א')return 'וָ'+pattern;
+ const firstMarks=pattern.slice(1).match(/^[\u0591-\u05c7]*/u)?.[0]||'';
+ const reduced=/[\u05b0-\u05b3]/u.test(firstMarks);
+ const doubled=firstMarks.includes('ּ');
+ return 'וַ'+prefix+(!reduced&&!doubled?'ּ':'')+pattern.slice(1);
+}
 for(const stem of STEMS){
  const grammar=GRAMMAR[stem.id];
  Object.assign(grammar,EXTRA[stem.id]||{});
@@ -200,6 +222,8 @@ for(const stem of STEMS){
   }
   return [person,pattern];
  });
+ grammar.wperf=grammar.perf.map(([person,pattern])=>[person,wawPerfectPattern(pattern)]);
+ grammar.wimpf=grammar.impf.map(([person,pattern])=>[person,wawImperfectPattern(pattern,stem.id,person)]);
 }
 const BEGAD = new Set(['ב','ג','ד','כ','פ','ת']);
 const FINALS = {כ:'ך',מ:'ם',נ:'ן',פ:'ף',צ:'ץ'};
@@ -214,6 +238,12 @@ function renderTemplate(tpl,verb){
    if(which==='C' && remainder.length===0 && FINALS[letter]) letter=FINALS[letter];
    return letter+((kind==='D'||kind==='L' && BEGAD.has(letter))?DAGESH:'');
  });
+ // Vor einem Labial (ב, מ, פ) oder einem reduzierten Anlautvokal
+ // wird Waw conjunctivum zu Schuruq (וּ), vgl. Mäder, S. 69.
+ if(word.startsWith('וְ')){
+  const rest=word.slice(2);
+  if(/^[במפ]/u.test(rest)||/^[א-ת]\u05bc?[\u05b0-\u05b3]/u.test(rest))word='וּ'+rest;
+ }
  return word.normalize('NFC');
 }
 // Eine Karte steht für eine tatsächlich angezeigte Schreibweise pro Wurzel.
@@ -413,6 +443,11 @@ function loadSettings(){
   for(const kind of ['stem','verb','form']){
    if(!Array.isArray(saved[kind]))return null;
    result[kind]=saved[kind].filter(id=>typeof id==='string'&&CHOICE_IDS[kind].has(id));
+  }
+  // Migration: Eine früher vollständig gewählte Formenliste bleibt „Alle“.
+  const oldFormIds=FORMS.filter(f=>!['wperf','wimpf'].includes(f.id)).map(f=>f.id);
+  if(oldFormIds.every(id=>result.form.includes(id))){
+   for(const id of ['wperf','wimpf'])if(!result.form.includes(id))result.form.push(id);
   }
   result.rankWeight=WEIGHTS.has(String(saved.rankWeight))?String(saved.rankWeight):'3';
   result.gamification=saved.gamification!==false;
